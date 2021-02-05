@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entitites.Concrete;
 using System;
@@ -9,43 +10,28 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            RentACarManager rentACarManager = new RentACarManager(new InMemoryCarDal());
+            RentACarManager rentACarManager = new RentACarManager(new EfCarDal());
             Console.WriteLine("All Cars List");
             foreach (var car in rentACarManager.GetAll())
             {
                 Console.WriteLine(car.CarName +": DailyPrice= "+car.DailyPrice);
             }
             Console.WriteLine();
-
-            Car car1=new Car { CarId=6,BrandId=3,CarName="V40",ColorId=4,DailyPrice=600,ModelYear=2019,Description="The Best Car For Everything"};
+            Console.WriteLine("After Fault Added");
+            Car car1 = new Car {  BrandId = 3, CarName = "V", ColorId = 4, DailyPrice = 600, ModelYear = 2019, Description = "The Best Car For Everything",Rentable=false };
             rentACarManager.Add(car1);
-            Console.WriteLine("All List After Added A New Car ");
-            foreach (var car in rentACarManager.GetAll())
-            {
-                Console.WriteLine(car.CarName + ": DailyPrice= " + car.DailyPrice);
-            }
             Console.WriteLine();
-            rentACarManager.Delete(car1);
-            Console.WriteLine("All List After Deleted A Car ");
 
-            foreach (var car in rentACarManager.GetAll())
-            {
-                Console.WriteLine(car.CarName + ": DailyPrice= " + car.DailyPrice);
-            }
             Console.WriteLine();
-            Console.WriteLine("All List After Updated A Car");
-            Car car3 = new Car { CarId = 2, BrandId = 5, CarName = "C180", ColorId = 3, DailyPrice = 1000, ModelYear = 2020, Description = "İt is Mercedes" };
-
-            rentACarManager.Update(car3);
+            Car car2 = new Car {  BrandId = 22, CarName = "Accent-Era", ColorId = 4, DailyPrice = 90, ModelYear = 2010, Description = "Min Money", Rentable = false };
+            rentACarManager.Add(car2);
+            Console.WriteLine();
+            Console.WriteLine("After Added Database");
             foreach (var car in rentACarManager.GetAll())
             {
                 Console.WriteLine(car.CarName + ": DailyPrice= " + car.DailyPrice);
             }
 
-            Console.WriteLine();
-            Console.WriteLine("GetById=3 ");
-
-            Console.WriteLine((rentACarManager.GetById(1)).CarName);
         }
     }
 }
