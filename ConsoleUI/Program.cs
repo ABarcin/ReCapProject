@@ -23,7 +23,7 @@ namespace ConsoleUI
         {
             foreach (var car in rentACarManager.GetCarDetails())
             {
-                Console.WriteLine(car.BrandName + " : " + car.CarName + " - " + car.ColorName + " Color" + " = " + car.DailyPrice + " For Daily Liras");
+                Console.WriteLine(car.BrandName + " : " + car.CarName + " - " + car.ColorName + " Color" + " = " + car.DailyPrice + " Liras For a Day");
             }
         }
 
