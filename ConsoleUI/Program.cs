@@ -10,62 +10,62 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            RentACarManager rentACarManager = new RentACarManager(new EfCarDal());
-            //GetAllCars(rentACarManager);
-            //AddCar(rentACarManager);
-            //DeleteCar(rentACarManager);
-            //UpdateCar(rentACarManager);
-            GetAllCarsDetail(rentACarManager);
+            CarManager carManager = new CarManager(new EfCarDal());
+            //GetAllCars(carManager);
+            //AddCar(carManager);
+            //DeleteCar(carManager);
+            //UpdateCar(carManager);
+            //GetAllCarsDetail(carManager);
 
         }
 
-        private static void GetAllCarsDetail(RentACarManager rentACarManager)
+        private static void GetAllCarsDetail(CarManager carManager)
         {
-            foreach (var car in rentACarManager.GetCarDetails())
+            foreach (var car in carManager.GetCarDetails().Data)
             {
                 Console.WriteLine(car.BrandName + " : " + car.CarName + " - " + car.ColorName + " Color" + " = " + car.DailyPrice + " Liras For a Day");
             }
         }
 
-        private static void UpdateCar(RentACarManager rentACarManager)
+        private static void UpdateCar(CarManager carManager)
         {
-            foreach (var car in rentACarManager.GetAll())
+            foreach (var car in carManager.GetAll().Data)
             {
                 if (car.CarId == 2006)
                 {
                     var updatedCar = car;
                     updatedCar.CarName = "Volvo s60";
-                    rentACarManager.Update(updatedCar);
+                    carManager.Update(updatedCar);
                 }
             }
         }
 
-        private static void DeleteCar(RentACarManager rentACarManager)
+        private static void DeleteCar(CarManager carManager)
         {
-            foreach (var car in rentACarManager.GetAll())
+            foreach (var car in carManager.GetAll().Data)
             {
                 if (car.CarId == 2006)
                 {
-                    rentACarManager.Delete(car);
+                    carManager.Delete(car);
                 }
             }
         }
 
-        private static void AddCar(RentACarManager rentACarManager)
+        private static void AddCar(CarManager carManager)
         {
             Car car2 = new Car { BrandId = 22, CarName = "Accent-Era", ColorId = 4, DailyPrice = 90, ModelYear = 2010, Description = "Min Money", Rentable = false };
-            rentACarManager.Add(car2);
+            carManager.Add(car2);
             Console.WriteLine("After Added Database");
-            foreach (var car in rentACarManager.GetAll())
+            foreach (var car in carManager.GetAll().Data)
             {
                 Console.WriteLine(car.CarName + ": DailyPrice= " + car.DailyPrice);
             }
         }
 
-        private static void GetAllCars(RentACarManager rentACarManager)
+        private static void GetAllCars(CarManager carManager)
         {
             Console.WriteLine("All Cars List");
-            foreach (var car in rentACarManager.GetAll())
+            foreach (var car in carManager.GetAll().Data)
             {
                 Console.WriteLine(car.CarName + ": DailyPrice= " + car.DailyPrice);
             }

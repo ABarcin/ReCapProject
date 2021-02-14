@@ -12,14 +12,14 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    public class RentACarManager : IRentACarService
+    public class CarManager : ICarService
     {
         ICarDal _carDal;
-        public RentACarManager(ICarDal carDal)
+        public CarManager(ICarDal carDal)
         {
             _carDal = carDal;
         }
-        public IResult add(Car car)
+        public IResult Add(Car car)
         {
             
             if (car.CarName.Length <= 1)
@@ -59,13 +59,13 @@ namespace Business.Concrete
             return new SuccessDataResult<Car> (_carDal.Get(p=>p.CarId==id),Messages.CarListedById);
         }
 
-        public IResult update(Car car)
+        public IResult Update(Car car)
         {
             _carDal.Update(car);
             return new SuccessResult(Messages.CarModified);
         }
 
-        public IResult delete(Car car)
+        public IResult Delete(Car car)
         {
             _carDal.Delete(car);
             return new SuccessResult(Messages.CarDeleted);

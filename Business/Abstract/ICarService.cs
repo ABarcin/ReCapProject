@@ -8,17 +8,11 @@ using System.Text;
 
 namespace Business.Abstract
 {
-    public interface IRentACarService
+    public interface ICarService:IServiceBase<Car>
     {
-        IDataResult<List<Car>> GetAll();
         IDataResult<List<Car>> GetCarsByBrandId(int id);
         IDataResult<List<Car>> GetCarsByColorId(int id);
         IDataResult<List<Car>> GetByDailyPrice(decimal min, decimal max);
-        IDataResult<Car> GetById(int id);
         IDataResult<List<CarDetailDto>> GetCarDetails();
-        IResult add(Car car);
-        IResult update(Car car);
-        IResult delete(Car car);
-
     }
 }
