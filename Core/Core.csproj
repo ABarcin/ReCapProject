@@ -5,11 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.11" />
+    <Compile Remove="Aspects\**" />
+    <EmbeddedResource Remove="Aspects\**" />
+    <None Remove="Aspects\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Aspects\Autofac\Validation\" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.11" />
   </ItemGroup>
 
 </Project>
