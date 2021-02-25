@@ -49,5 +49,13 @@ namespace Business.Constants
         public static string RentalModified = "Rental Modified";
         public static string RentalDeleted = "Rental Deleted";
         public static string CarCantRentable = "Car Can Not Be Rented";
+        public static string HaventCar = "We Dont Have A Car For Rent";
+        public static string CarImageAdded="Car image added";
+        internal static string CarImageDeleted;
+        internal static string CarImagesListed;
+        internal static string CarImageListedById;
+        internal static string CarImageUpdated;
+        internal static string CarNameAlreadyExists;
+        public static string CountOfCarImagesCorrect="Araba resim sayısı fazla";
     }
 }

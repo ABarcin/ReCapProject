@@ -6,9 +6,7 @@ using System.Text;
 
 namespace DataAccess.Abstract
 {
-    public interface IRentalDal : IEntityRepository<Rental>
+    public interface ICarImageDal:IEntityRepository<CarImage>
     {
-        bool CheckCarRented(int id);
-        bool HaveCar(int id);
     }
 }

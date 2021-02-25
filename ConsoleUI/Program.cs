@@ -11,11 +11,15 @@ namespace ConsoleUI
         static void Main(string[] args)
         {
             CarManager carManager = new CarManager(new EfCarDal());
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            Rental rental = new Rental { CarId = 3, CustomerId = 2, RentDate = DateTime.Now.Date };
+            Console.WriteLine(rentalManager.Add(rental).Message);
             //GetAllCars(carManager);
             //AddCar(carManager);
             //DeleteCar(carManager);
             //UpdateCar(carManager);
             //GetAllCarsDetail(carManager);
+
 
         }
 

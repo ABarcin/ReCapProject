@@ -9,7 +9,7 @@ namespace Core.Utilities.Results
         //this bu sınıfa gönder
         public Result(bool success,string message):this(success)
         {
-
+            Message = message;
         }
         public Result(bool success)
         {

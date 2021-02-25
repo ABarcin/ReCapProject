@@ -20,26 +20,29 @@ namespace Business.Concrete
             _rentalDal = rentalDal;
         }
 
-        public IResult Add(Rental entity)
+        public IResult Add(Rental rental)
         {
-            var rentable = GetById(entity.CarId).Data;
-            if (rentable!=null)
+            if (_rentalDal.HaveCar(rental.CarId))
             {
-                if (rentable.ReturnDate == null)
+                if (_rentalDal.CheckCarRented(rental.CarId))
                 {
-                    Console.WriteLine("Hata Aldın");
                     return new ErrorResult(Messages.CarCantRentable);
-                    
+                }
+                else
+                {
+                    _rentalDal.Add(rental);
+                    return new SuccessResult(Messages.RentalAdded);
                 }
             }
-            _rentalDal.Add(entity);
-            Console.WriteLine("Araba Kiralandı");
-            return new SuccessResult(Messages.RentalAdded);
+            else
+            {
+                return new ErrorResult(Messages.HaventCar);
+            }
         }
 
-        public IResult Delete(Rental entity)
+        public IResult Delete(Rental rental)
         {
-            _rentalDal.Delete(entity);
+            _rentalDal.Delete(rental);
             return new SuccessResult(Messages.RentalDeleted);
         }
 
@@ -53,9 +56,9 @@ namespace Business.Concrete
             return new SuccessDataResult<Rental>(_rentalDal.Get(r=>r.CarId==id),Messages.RentalListedById);
         }
 
-        public IResult Update(Rental entity)
+        public IResult Update(Rental rental)
         {
-            _rentalDal.Update(entity);
+            _rentalDal.Update(rental);
             return new SuccessResult(Messages.RentalModified);
         }
     }
