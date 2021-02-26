@@ -57,5 +57,6 @@ namespace Business.Constants
         internal static string CarImageUpdated;
         internal static string CarNameAlreadyExists;
         public static string CountOfCarImagesCorrect="Araba resim sayısı fazla";
+        internal static string CarImageLimitExceeded;
     }
 }

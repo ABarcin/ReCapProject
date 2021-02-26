@@ -3,11 +3,13 @@ using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;
+using Core.Utilities.Images;
 using Core.Utilities.Results;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using Entitites.Concrete;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,11 +26,14 @@ namespace Business.Concrete
             _carImageDal = carImageDal;
         }
         [ValidationAspect(typeof(CarImageValidator))]
-        public IResult Add(CarImage carImage)
+        public IResult Add(IFormFile imageFile,CarImage carImage)
         {
-            IResult result = BusinessRules.Run(CheckIfCountOfCarImagesCorrect(carImage.CarId));
-            var newPathName = Guid.NewGuid().ToString("N") + ".jpg";
-            
+            IResult result = BusinessRules.Run(CheckImageLimitExceeded(carImage.CarId));
+            if (result != null)
+            {
+                return result;
+            }
+            carImage.ImagePath= ImageCRUD.Add(imageFile);
             carImage.Date = DateTime.Now.Date;
             _carImageDal.Add(carImage);
             return new SuccessResult(Messages.CarImageAdded);
@@ -50,22 +55,23 @@ namespace Business.Concrete
             return new SuccessDataResult<CarImage>(_carImageDal.Get(c => c.Id == id), Messages.CarImageListedById);
         }
 
-        public IResult Update(CarImage carImage)
+        public IResult Update(IFormFile file,CarImage carImage)
         {
             _carImageDal.Update(carImage);
             return new SuccessResult(Messages.CarImageUpdated);
         }
-        private IResult CheckIfCountOfCarImagesCorrect(int carId)
+        private IResult CheckImageLimitExceeded(int carid)
         {
-            var result = _carImageDal.GetAll(c => c.CarId == carId).Count;
-            if (result >= 5)
+            var carImagecount = _carImageDal.GetAll(p => p.CarId == carid).Count;
+            if (carImagecount >= 5)
             {
-                return new ErrorResult(Messages.CountOfCarImagesCorrect);
+                return new ErrorResult(Messages.CarImageLimitExceeded);
             }
+
             return new SuccessResult();
         }
-      
-       
+
+
 
     }
 }
