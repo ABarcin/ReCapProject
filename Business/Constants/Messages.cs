@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Core.Entities.Concrete;
+using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Business.Constants
@@ -51,12 +53,19 @@ namespace Business.Constants
         public static string CarCantRentable = "Car Can Not Be Rented";
         public static string HaventCar = "We Dont Have A Car For Rent";
         public static string CarImageAdded="Car image added";
-        internal static string CarImageDeleted;
-        internal static string CarImagesListed;
-        internal static string CarImageListedById;
-        internal static string CarImageUpdated;
-        internal static string CarNameAlreadyExists;
+        public static string CarImageDeleted = "Car Image Deleted";
+        public static string CarImagesListed = "Car Images Listed";
+        public static string CarImageListedById = "Car Image Listed By Id";
+        public static string CarImageUpdated = "Car Image Updated";
+        public static string CarNameAlreadyExists = "Car Name Already Exists";
         public static string CountOfCarImagesCorrect="Araba resim sayısı fazla";
-        internal static string CarImageLimitExceeded;
+        public static string CarImageLimitExceeded = "Car Image Limit Exceted";
+        public static string AuthorizationDenied="Access Denied";
+        public static string UserRegistered="User Registered";
+        public static string UserNotFound="User Not Found";
+        public static string PasswordError = "Error Pasword!";
+        public static string SuccessfulLogin = "Login Successful";
+        public static string UserAlreadyExists = "User Already Exists";
+        public static string AccessTokenCreated = "Acces Token Created";
     }
 }
