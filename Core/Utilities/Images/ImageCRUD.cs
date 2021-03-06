@@ -44,7 +44,7 @@ namespace Core.Utilities.Images
             FileInfo imageFileInfo = new FileInfo(imageFile.FileName);
             string imageFileExtension = imageFileInfo.Extension;
             var newPath = Guid.NewGuid().ToString()
-               + "-" + DateTime.Now.Day + "." + DateTime.Now.Month + "." + DateTime.Now.Year + imageFileExtension;
+               + "-" + DateTime.Now.Day + "-" + DateTime.Now.Month + "-" + DateTime.Now.Year + imageFileExtension;
             string path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName + @"\WebAPI\Resources\Images");
             string result = $@"{path}\{newPath}";
             return result;
