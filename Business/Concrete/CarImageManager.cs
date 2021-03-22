@@ -33,7 +33,7 @@ namespace Business.Concrete
             {
                 return result;
             }
-            carImage.ImagePath= ImageCRUD.Add(imageFile);
+            carImage.ImagePath = ImageCRUD.Add(imageFile);
             carImage.Date = DateTime.Now.Date;
             _carImageDal.Add(carImage);
             return new SuccessResult(Messages.CarImageAdded);
@@ -54,7 +54,10 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<CarImage>(_carImageDal.Get(c => c.Id == id), Messages.CarImageListedById);
         }
-
+        public IDataResult<List<CarImage>> GetByCarId(int carId)
+        {
+            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(c => c.CarId == carId), Messages.CarImageListedByCarId);
+        }
         public IResult Update(IFormFile file,CarImage carImage)
         {
             _carImageDal.Update(carImage);

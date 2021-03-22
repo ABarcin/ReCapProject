@@ -70,5 +70,7 @@ namespace Business.Constants
         public static string CarUpdatedByTransaction="Car Updated By Transaction Aspect";
         internal static string CustomerDetailsListed;
         internal static string RentalDetailsListed;
+        internal static string CarImageListedByCarId;
+        internal static string CarsListedByCarId;
     }
 }

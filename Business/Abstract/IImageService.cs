@@ -13,6 +13,7 @@ namespace Business.Abstract
         IResult Delete(T entity);
         IResult Update(IFormFile file, T entity);
         IDataResult<T> GetById(int id);
+        IDataResult<List<T>> GetByCarId(int carId);
         IDataResult<List<T>> GetAll();
     }
 }

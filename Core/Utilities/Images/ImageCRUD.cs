@@ -10,6 +10,7 @@ namespace Core.Utilities.Images
     {
         public static string Add(IFormFile imageFile)
         {
+            PathName pathName = new PathName();
             var sourcePath = Path.GetTempFileName();
             if (imageFile.Length > 0)
             {
@@ -18,9 +19,9 @@ namespace Core.Utilities.Images
                     imageFile.CopyTo(stream);
                 }
             }
-            var result = newPath(imageFile);
+            var result = newPath(imageFile,pathName);
             File.Move(sourcePath, result);
-            return result;
+            return pathName.Name;
         }
         public static void Delete(string path)
         {
@@ -28,7 +29,8 @@ namespace Core.Utilities.Images
         }
         public static string Update(IFormFile imageFile,string sourcePath)
         {
-            var result = newPath(imageFile);
+            PathName pathName = new PathName();
+            var result = newPath(imageFile,pathName);
             if (sourcePath.Length > 0)
             {
                 using (var stream = new FileStream(result, FileMode.Create))
@@ -37,17 +39,23 @@ namespace Core.Utilities.Images
                 }
             }
             File.Delete(sourcePath);
-            return result;
+            return pathName.Name;
         }
-        public static string newPath(IFormFile imageFile)
+        public static string newPath(IFormFile imageFile,PathName pathName)
         {
             FileInfo imageFileInfo = new FileInfo(imageFile.FileName);
             string imageFileExtension = imageFileInfo.Extension;
             var newPath = Guid.NewGuid().ToString()
                + "-" + DateTime.Now.Day + "-" + DateTime.Now.Month + "-" + DateTime.Now.Year + imageFileExtension;
-            string path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName + @"\WebAPI\Resources\Images");
+            string path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()) + @"\WebAPI\Resources\Images");
             string result = $@"{path}\{newPath}";
+            pathName.Name = @"\Resources\Images\" + newPath;
             return result;
         }
+        public class PathName
+        {
+            public string Name { get; set; }
+        }
     }
+    
 }
