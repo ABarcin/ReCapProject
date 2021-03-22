@@ -24,8 +24,6 @@ namespace DataAccess.Concrete.EntityFramework
                              join b in context.Brands
                              on ca.BrandId equals b.BrandId
                              join image in context.CarImages
-                             on ca.CarId equals image.CarId into a
-                             from imagePath in a.DefaultIfEmpty()
                              select new CarDetailDto
                              {
                                  CarName = ca.CarName,
@@ -37,10 +35,6 @@ namespace DataAccess.Concrete.EntityFramework
                                  DailyPrice = ca.DailyPrice,
                                  ModelYear = ca.ModelYear,
                                  Description = ca.Description,
-                                 ImagePath = new List<string>
-                                 {
-                                     imagePath.ImagePath
-                                 }
                              };
                 return filter == null
                     ? result.ToList()
