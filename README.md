@@ -1,6 +1,6 @@
 # ReCapProject .NET CORE
 Bu repo ReCapProjectFrontEnd Frontend kısmının backend'i için tasarlanmıştır. Bu reponun oluşturulması hem kendimi geliştirmek hemde bu yolda gitmek isteyen arkadaşların görmesi ve en azından bir fikir vermesi için oluşturulmuştur.
-![Frontend Görünümü](https://giphy.com/gifs/9PYWngCla9aSpHwt5O)
+<img src="https://media.giphy.com/media/9PYWngCla9aSpHwt5O/giphy.gif">
 ## Getting Started
 .Net Core ile kurumsal bir proje nasıl yapılır. Kendimi geliştirmek ve pratiklik kazanmak için oluşturmuş olduğum bu projeyi inceleyip kafanıza takılan bir yer olursa sorabilirsiniz.
 Engin hocamızın direktifleri ile yapılan örnek bir projedir. Daha detaylı bilgi için aşağıda paylaşacağım iletişim bilgilerinden bana ulaşabilirsiniz
