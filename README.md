@@ -14,4 +14,4 @@ Veri tabanı hatası alırsanız yada site görünümü düzenli değil ve eksik
 ## Authors
 * **Ahmet BARÇIN** - [Github](https://github.com/ABarcin) [LinkenIn](https://www.linkedin.com/in/ahmet-bar%C3%A7%C4%B1n-b9998513b/)
 ## License
-Bu proje için hiç bir lisansa itiyaç duyulmamıştır gönül rahatlığı ile kullanabilirsiniz.
+Bu proje için hiç bir lisansa ihtiyaç duyulmamıştır gönül rahatlığı ile kullanabilirsiniz.
