@@ -34,6 +34,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  DailyPrice = ca.DailyPrice,
                                  ModelYear = ca.ModelYear,
                                  Description = ca.Description,
+                                 ImagePath=ca.MainImagePath
                              };
                 return filter == null
                     ? result.ToList()
