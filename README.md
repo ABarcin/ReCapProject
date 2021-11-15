@@ -12,6 +12,6 @@ Projede değişiklik yapmak istiyor iseniz visual studio yu kurmanızı tavsiye 
 ### Notes:
 Veri tabanı hatası alırsanız yada site görünümü düzenli değil ve eksik bilgiler görünüyor yada resimler görünmüyor ise apiUrl değişkenine tanımlı url'i kendi bilgisayarınızın url kodu ile değiştirmeyi unutmayınız. Projede emeği geçen [Engin Demirog](https://twitter.com/engindemirog) Hocamıza SOnsuz Teşekkürler.
 ## Authors
-* **Ahmet BARÇIN** - [Github](https://github.com/ABarcin) [LinkenIn](https://www.linkedin.com/in/ahmet-bar%C3%A7%C4%B1n-b9998513b/)
+* **Ahmet BARÇIN** - [Github](https://github.com/ABarcin) [LinkedIn](https://www.linkedin.com/in/ahmet-bar%C3%A7%C4%B1n-b9998513b/)
 ## License
 Bu proje için hiç bir lisansa ihtiyaç duyulmamıştır gönül rahatlığı ile kullanabilirsiniz.
